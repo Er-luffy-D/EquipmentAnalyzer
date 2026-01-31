@@ -8,6 +8,6 @@ class Dataset(models.Model):
     avg_flowrate= models.FloatField()
     avg_pressure= models.FloatField()
     avg_temperature= models.FloatField()
-    type_distriction = models.JSONField()
+    type_distribution  = models.JSONField()
     class Meta:
         ordering = ['-uploaded_at']
