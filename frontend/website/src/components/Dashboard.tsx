@@ -167,7 +167,7 @@ export const Dashboard = () => {
 										<td className="p-2">{d.avg_flowrate.toFixed(2)}</td>
 										<td className="p-2">{d.avg_temperature.toFixed(2)}</td>
 										<td className="p-2">
-											<a href={`http://localhost:5173/dashboard/report/${d.id}`}> Click here</a>
+											<a href={`https://equipment-analyzer.vercel.app/dashboard/report/${d.id}`}> Click here</a>
 										</td>
 									</tr>
 								))}
