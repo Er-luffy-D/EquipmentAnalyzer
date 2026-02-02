@@ -5,6 +5,7 @@ import { Login } from "./components/Login";
 import { Dashboard } from "./components/Dashboard";
 import { Error } from "./components/Error";
 import { Authorized } from "./components/Authorized";
+import { Report } from "./components/Report";
 
 const App = () => {
 	return (
@@ -22,6 +23,7 @@ const App = () => {
 							</Authorized>
 						}
 					></Route>
+					<Route path="/dashboard/report/:id" element={<Report/>}></Route>
 					<Route path="*" element={<Error />}></Route>
 				</Routes>
 			</BrowserRouter>

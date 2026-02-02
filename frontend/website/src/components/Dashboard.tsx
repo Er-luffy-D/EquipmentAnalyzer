@@ -17,7 +17,6 @@ export const Dashboard = () => {
 	const [data, setData] = useState<Dataset[]>([]);
 	const [selectedId, setSelectedId] = useState<number | null>(null);
 
-	/* ---------------- AUTH HEADER (STABLE) ---------------- */
 	const headers = useMemo(() => {
 		const token = localStorage.getItem("access_token");
 		return {
@@ -25,7 +24,6 @@ export const Dashboard = () => {
 		};
 	}, []);
 
-	/* ---------------- LOGOUT ---------------- */
 	const logout = () => {
 		localStorage.removeItem("access_token");
 		localStorage.removeItem("refresh_token");
@@ -35,7 +33,6 @@ export const Dashboard = () => {
 	const updateData = (data: Dataset[]) => {
 		setData(data);
 	};
-	/* ---------------- FETCH SUMMARY ---------------- */
 	const fetchSummary = useCallback(async () => {
 		try {
 			const res = await axios.get("http://127.0.0.1:8000/api/summary/", { headers });
@@ -154,6 +151,7 @@ export const Dashboard = () => {
 									<th className="p-2">Total</th>
 									<th className="p-2">Avg Flowrate</th>
 									<th className="p-2">Avg Temperature</th>
+									<th className="p-2">chart</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -167,6 +165,9 @@ export const Dashboard = () => {
 										<td className="p-2">{d.total_count}</td>
 										<td className="p-2">{d.avg_flowrate.toFixed(2)}</td>
 										<td className="p-2">{d.avg_temperature.toFixed(2)}</td>
+										<td className="p-2">
+											<a href={`http://localhost:5173/dashboard/report/${d.id}`}> Click here</a>
+										</td>
 									</tr>
 								))}
 							</tbody>
