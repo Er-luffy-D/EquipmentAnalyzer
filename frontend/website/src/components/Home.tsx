@@ -1,10 +1,27 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 export const Home = () => {
+	const [loggedIn] = useState<boolean>(() => {
+		return localStorage.getItem("access_token") !== null;
+	});
+
 	return (
 		<div className="bg-[url('/back.png')] bg-cover  min-h-screen text-white p-8">
 			<header className="flex justify-end max-w-7xl mx-auto">
-				<button className="px-6 py-2 border border-gray-700 rounded-lg hover:bg-gray-900 transition-colors duration-300 text-gray-300 hover:text-white">
-					Login
-				</button>
+				{!loggedIn ? (
+					<Link to={"/login"}>
+						<button className="px-6 py-2 border border-gray-700 rounded-lg hover:bg-gray-900 transition-colors duration-300 text-gray-300 hover:text-white">
+							Login
+						</button>
+					</Link>
+				) : (
+					<Link to={"/dashboard"}>
+						<button className="px-6 py-2 border border-gray-700 rounded-lg hover:bg-gray-900 transition-colors duration-300 text-gray-300 hover:text-white">
+							Dashboard
+						</button>
+					</Link>
+				)}
 			</header>
 
 			<main className="flex flex-col items-center justify-center min-h-[80vh] ">
@@ -20,7 +37,7 @@ export const Home = () => {
 					</p>
 
 					<a
-						href="https://github.com"
+						href="https://github.com/Er-luffy-D/EquipmentAnalyzer"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="group relative inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-gray-900 to-gray-800 rounded-xl hover:from-gray-800 hover:to-gray-700 transition-all duration-300 border border-gray-800 hover:border-gray-700 shadow-lg hover:shadow-xl hover:scale-[1.02]"

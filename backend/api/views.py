@@ -51,6 +51,11 @@ def upload_csv(request):
 def summary(request):
     return Response(DatasetSerializer(Dataset.objects.all(),many=True).data)
 
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def authorise(request):
+    return Response({"message: authorised"},status=status.HTTP_200_OK)
+
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
