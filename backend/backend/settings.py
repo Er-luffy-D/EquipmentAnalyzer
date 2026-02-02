@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
-
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,13 +25,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^p$v_01#u09=syh%n0sjcilevnmoty)!n6g@7_1$_*acv%8q36'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "equipmentanalyzer.onrender.com",
     "localhost",
     "127.0.0.1",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://equipmentanalyzer.onrender.com"
+]
+
 
 # Application definition
 
