@@ -92,7 +92,6 @@ export const Report = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 space-y-8">
-      {/* HEADER */}
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold text-gray-800">
           Dataset Report #{dataset.id}
@@ -106,7 +105,6 @@ export const Report = () => {
         </button>
       </div>
 
-      {/* STATS */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <StatCard title="Total Records" value={dataset.total_count} />
         <StatCard title="Avg Flowrate" value={dataset.avg_flowrate.toFixed(2)} />
@@ -114,7 +112,6 @@ export const Report = () => {
         <StatCard title="Avg Temperature" value={dataset.avg_temperature.toFixed(2)} />
       </div>
 
-      {/* CHART */}
       <div className="bg-white rounded-xl shadow p-6">
         <h2 className="text-lg font-semibold mb-4">
           Equipment Type Distribution
