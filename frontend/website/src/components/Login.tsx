@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { apiUrl } from "./constants";
 
 export const Login = () => {
 	const [username, setUserName] = useState<string>("");
@@ -14,7 +15,7 @@ export const Login = () => {
 		}
 
 		try {
-			const apiurl = "http://127.0.0.1:8000/api/token/";
+			const apiurl = apiUrl+"token/";
 			const response = await axios.post(apiurl, {
 				username,
 				password,

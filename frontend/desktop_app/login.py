@@ -99,7 +99,7 @@ class LoginWindow(QWidget):
             QMessageBox.warning(self, "Error", "All fields required")
             return
 
-        url = "http://127.0.0.1:8000/api/token/"
+        url = "https://equipmentanalyzer.onrender.com/api/token/"
 
         try:
             response = requests.post(

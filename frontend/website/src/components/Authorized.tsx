@@ -2,10 +2,10 @@ import axios from "axios";
 import type React from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "./constants";
 
 export const Authorized = ({ children }: { children: React.ReactNode }) => {
 	const navigate = useNavigate();
-	const apiUrl = "http://127.0.0.1:8000/api/";
 
 	useEffect(() => {
 		const checkauth = async () => {

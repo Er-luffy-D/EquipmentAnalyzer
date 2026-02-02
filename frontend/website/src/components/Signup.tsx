@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { apiUrl } from "./constants";
 
 export const Signup = () => {
 	const [username, setUserName] = useState<string>("");
@@ -19,7 +20,7 @@ export const Signup = () => {
 		}
 
 		try {
-			const apiurl = "http://127.0.0.1:8000/api/signup/";
+			const apiurl = apiUrl+"signup/";
 			const response = await axios.post(apiurl, {
 				username,
 				password,

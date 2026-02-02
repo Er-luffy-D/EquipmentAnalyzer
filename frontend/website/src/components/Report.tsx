@@ -11,6 +11,7 @@ import { useEffect, useMemo, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 import { toast } from "react-toastify"
+import { apiUrl } from "./constants"
 
 ChartJS.register(
   CategoryScale,
@@ -43,7 +44,7 @@ export const Report = () => {
     const fetchReport = async () => {
       try {
         const res = await axios.get(
-          "http://127.0.0.1:8000/api/summary/",
+          apiUrl+"summary/",
           { headers }
         )
 

@@ -118,7 +118,7 @@ class Dashboard(QWidget):
 
     # ---------- AUTH ----------
     def refresh_access_token(self):
-        url = "http://127.0.0.1:8000/api/token/refresh/"
+        url = "https://equipmentanalyzer.onrender.com/api/token/refresh/"
         response = requests.post(url, json={"refresh": self.refresh_token})
         if response.status_code == 200:
             self.access_token = response.json()["access"]
@@ -127,7 +127,7 @@ class Dashboard(QWidget):
 
     # ---------- DATA ----------
     def fetch_summary(self):
-        url = "http://127.0.0.1:8000/api/summary/"
+        url = "https://equipmentanalyzer.onrender.com/api/summary/"
         headers = {"Authorization": f"Bearer {self.access_token}"}
 
         response = requests.get(url, headers=headers)
@@ -163,7 +163,7 @@ class Dashboard(QWidget):
         self.table.resizeColumnsToContents()
 
     def update_chart_from_table(self, row, column):
-        url = "http://127.0.0.1:8000/api/summary/"
+        url = "https://equipmentanalyzer.onrender.com/api/summary/"
         headers = {"Authorization": f"Bearer {self.access_token}"}
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
@@ -175,7 +175,7 @@ class Dashboard(QWidget):
         if not file_path:
             return
 
-        url = "http://127.0.0.1:8000/api/upload/"
+        url = "https://equipmentanalyzer.onrender.com/api/upload/"
         headers = {"Authorization": f"Bearer {self.access_token}"}
         with open(file_path, "rb") as f:
             response = requests.post(url, headers=headers, files={"file": f})
@@ -189,7 +189,7 @@ class Dashboard(QWidget):
             return
 
         dataset_id = self.table.item(row, 0).text()
-        url = f"http://127.0.0.1:8000/api/report/{dataset_id}/"
+        url = f"https://equipmentanalyzer.onrender.com/api/report/{dataset_id}/"
         headers = {"Authorization": f"Bearer {self.access_token}"}
 
         response = requests.get(url, headers=headers)

@@ -94,7 +94,7 @@ class SignupWindow(QWidget):
             QMessageBox.warning(self, "Error", "All fields required")
             return
 
-        url = "http://127.0.0.1:8000/api/signup/"
+        url = "https://equipmentanalyzer.onrender.com/api/signup/"
 
         try:
             response = requests.post(

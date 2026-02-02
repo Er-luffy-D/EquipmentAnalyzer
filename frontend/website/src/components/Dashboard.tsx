@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { apiUrl } from "./constants";
 
 type Dataset = {
 	id: number;
@@ -13,7 +14,7 @@ type Dataset = {
 
 export const Dashboard = () => {
 	const navigate = useNavigate();
-
+	
 	const [data, setData] = useState<Dataset[]>([]);
 	const [selectedId, setSelectedId] = useState<number | null>(null);
 
@@ -35,7 +36,7 @@ export const Dashboard = () => {
 	};
 	const fetchSummary = useCallback(async () => {
 		try {
-			const res = await axios.get("http://127.0.0.1:8000/api/summary/", { headers });
+			const res = await axios.get(apiUrl+"summary/", { headers });
 			updateData(res.data);
 		} catch {
 			toast.error("Failed to fetch summary");
@@ -48,7 +49,7 @@ export const Dashboard = () => {
 			formData.append("file", file);
 
 			try {
-				await axios.post("http://127.0.0.1:8000/api/upload/", formData, { headers });
+				await axios.post(apiUrl+"upload/", formData, { headers });
 				toast.success("CSV uploaded successfully");
 				fetchSummary();
 			} catch {
@@ -65,7 +66,7 @@ export const Dashboard = () => {
 		}
 
 		try {
-			const res = await axios.get(`http://127.0.0.1:8000/api/report/${selectedId}/`, {
+			const res = await axios.get(`${apiUrl}report/${selectedId}/`, {
 				headers,
 				responseType: "blob",
 			});
